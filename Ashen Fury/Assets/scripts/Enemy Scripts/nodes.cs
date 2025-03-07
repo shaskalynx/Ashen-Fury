@@ -23,6 +23,18 @@ public abstract class Node
 
     public abstract NodeState Evaluate(Vector3 currentState);
     protected abstract float CalculateBaseFitness(Vector3 currentState);
+
+    protected void RotateTowards(Transform enemyTransform, Vector3 targetPosition)
+    {
+        Vector3 directionToTarget = (targetPosition - enemyTransform.position).normalized;
+        directionToTarget.y = 0; // Keep the rotation only on the horizontal plane
+
+        if (directionToTarget != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+            enemyTransform.rotation = Quaternion.Slerp(enemyTransform.rotation, lookRotation, Time.deltaTime * 5f);
+        }
+    }
 }
 
 public class AttackPlayer : Node
@@ -47,23 +59,10 @@ public class AttackPlayer : Node
 
         if(distanceToPlayer <= atkRange)
         {
-            //Debug.Log("attacking the player");
-            // Make enemy face the player
-            Vector3 directionToPlayer = (player.transform.position - agent.transform.position).normalized;
-            directionToPlayer.y = 0; // Keep the rotation only on the horizontal plane
-            
-            if (directionToPlayer != Vector3.zero)
-            {
-                // Create the rotation we need to be in to look at the target
-                Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
-                // Smoothly rotate towards the target
-                agent.transform.rotation = Quaternion.Slerp(agent.transform.rotation, lookRotation, Time.deltaTime * 5f);
-            }
-
+            RotateTowards(agent.transform, player.transform.position);
             return NodeState.success;
         }
         
-        //Debug.Log("out of range, chasing player");
         return NodeState.fail;
     }
 
@@ -110,6 +109,7 @@ public class ChasePlayer : Node
         if(distanceToPlayer <= detectionRadius)
         {
             agent.SetDestination(player.transform.position);
+            RotateTowards(agent.transform, player.transform.position);
             return agent.remainingDistance > agent.stoppingDistance ? 
                    NodeState.running : NodeState.success;
         }
