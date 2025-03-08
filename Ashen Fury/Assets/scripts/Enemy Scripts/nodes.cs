@@ -11,7 +11,6 @@ public abstract class Node
     public float position; // Single value representing the position of the node in the tree
     public string name;
 
-
     public virtual void CalculateFitness(Vector3 currentState)
     {
         // Base fitness calculation
@@ -23,7 +22,7 @@ public abstract class Node
 
     public abstract NodeState Evaluate(Vector3 currentState);
     protected abstract float CalculateBaseFitness(Vector3 currentState);
-
+    
     protected void RotateTowards(Transform enemyTransform, Vector3 targetPosition)
     {
         Vector3 directionToTarget = (targetPosition - enemyTransform.position).normalized;
@@ -40,14 +39,24 @@ public abstract class Node
 public class AttackPlayer : Node
 {
     private NavMeshAgent agent;
-    private float atkRange;
+    private float attackRange;
+    private float attackCooldown;
+    private float currentCooldown = 0f;
     private GameObject player;
     
-    public AttackPlayer(NavMeshAgent agent, float atkRange)
+    public AttackPlayer(NavMeshAgent agent, float attackRange, float attackCooldown)
     {
         this.agent = agent;
-        this.atkRange = atkRange;
+        this.attackRange = attackRange;
+        this.attackCooldown = attackCooldown;
         this.name = "AttackPlayer";
+    }
+    
+    // Method to update parameters at runtime
+    public void UpdateParameters(float newAttackRange, float newAttackCooldown)
+    {
+        this.attackRange = newAttackRange;
+        this.attackCooldown = newAttackCooldown;
     }
 
     public override NodeState Evaluate(Vector3 currentState)
@@ -57,9 +66,28 @@ public class AttackPlayer : Node
         
         float distanceToPlayer = Vector3.Distance(agent.transform.position, player.transform.position);
 
-        if(distanceToPlayer <= atkRange)
+        // Update cooldown
+        currentCooldown -= Time.deltaTime;
+
+        if(distanceToPlayer <= attackRange)
         {
+            // Use the RotateTowards method from the base class
             RotateTowards(agent.transform, player.transform.position);
+
+            // Only attack if cooldown is finished
+            if (currentCooldown <= 0)
+            {
+                // Reset cooldown and trigger attack
+                currentCooldown = attackCooldown;
+                
+                // Attack logic could call an animation or damage method here
+                animationHandler animHandler = agent.GetComponent<animationHandler>();
+                if (animHandler != null)
+                {
+                    animHandler.attack();
+                }
+            }
+
             return NodeState.success;
         }
         
@@ -74,7 +102,7 @@ public class AttackPlayer : Node
         float baseFitness = 0f;
         
         // High fitness when close and healthy
-        if(distanceToPlayer <= atkRange)
+        if(distanceToPlayer <= attackRange)
         {
             baseFitness = 1.0f;
         }
@@ -90,13 +118,23 @@ public class AttackPlayer : Node
 public class ChasePlayer : Node
 {
     private NavMeshAgent agent;
-    private float detectionRadius;
+    private float aggroRange;
+    private float newDestinationCD;
+    private float currentDestinationCD = 0f;
     
-    public ChasePlayer(NavMeshAgent agent, float detectionRadius)
+    public ChasePlayer(NavMeshAgent agent, float aggroRange, float newDestinationCD)
     {
         this.agent = agent;
-        this.detectionRadius = detectionRadius;
+        this.aggroRange = aggroRange;
+        this.newDestinationCD = newDestinationCD;
         this.name = "ChasePlayer";
+    }
+    
+    // Method to update parameters at runtime
+    public void UpdateParameters(float newAggroRange, float newDestinationCD)
+    {
+        this.aggroRange = newAggroRange;
+        this.newDestinationCD = newDestinationCD;
     }
 
     public override NodeState Evaluate(Vector3 currentState)
@@ -106,10 +144,21 @@ public class ChasePlayer : Node
 
         float distanceToPlayer = Vector3.Distance(agent.transform.position, player.transform.position);
 
-        if(distanceToPlayer <= detectionRadius)
+        // Update destination cooldown
+        currentDestinationCD -= Time.deltaTime;
+
+        if(distanceToPlayer <= aggroRange)
         {
-            agent.SetDestination(player.transform.position);
+            // Only set new destination when cooldown is finished
+            if (currentDestinationCD <= 0)
+            {
+                agent.SetDestination(player.transform.position);
+                currentDestinationCD = newDestinationCD;
+            }
+            
+            // Use the RotateTowards method from the base class
             RotateTowards(agent.transform, player.transform.position);
+            
             return agent.remainingDistance > agent.stoppingDistance ? 
                    NodeState.running : NodeState.success;
         }
@@ -122,8 +171,8 @@ public class ChasePlayer : Node
         float healthPercentage = currentState.y;
         
         // Optimal chase distance calculation
-        float optimalDistance = detectionRadius * 0.5f;
-        float distanceFactor = 1.0f - Mathf.Abs(distanceToPlayer - optimalDistance) / detectionRadius;
+        float optimalDistance = aggroRange * 0.5f;
+        float distanceFactor = 1.0f - Mathf.Abs(distanceToPlayer - optimalDistance) / aggroRange;
         
         return distanceFactor * healthPercentage;
     }

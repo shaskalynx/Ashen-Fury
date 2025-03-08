@@ -9,28 +9,39 @@ public class enemy : MonoBehaviour
     public List<Node> wolves;
     public Transform target;
     public UnityEngine.AI.NavMeshAgent agent;
-    public float detectionRadius = 10f;
+    
+    [Header("Detection & Combat")]
+    [SerializeField] public float aggroRange = 10f;
+    [SerializeField] public float attackRange = 2f;
+    [SerializeField] public float attackCD = 3f;
+    [SerializeField] public float newDestinationCD = 0.5f;
+    private float currentDestinationCD;
 
-    public float health = 100f;
+    [Header("Health")]
+    [SerializeField] public float health = 100f;
     public float currentHealth;
     public Vector3 currentState;
     public NodeState result;
 
-    public string stateName;
-    public float distanceToPlayer;
-    public float distanceToPatrolPoint;
+    [Header("Status")]
+    [SerializeField] public string stateName;
+    [SerializeField] public float distanceToPlayer;
+    [SerializeField] public float distanceToPatrolPoint;
 
     enemyHealthSystem enemyHealth;
+    GameObject player;
 
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         enemyHealth = GetComponent<enemyHealthSystem>();
+        player = GameObject.FindWithTag("Player");
+        currentDestinationCD = 0;
 
         wolves = new List<Node>
         {
-            new AttackPlayer(agent, 2f),
-            new ChasePlayer(agent, detectionRadius),
+            new AttackPlayer(agent, attackRange, attackCD),
+            new ChasePlayer(agent, aggroRange, newDestinationCD),
             new Patrol(agent, target),
         };
 
@@ -75,7 +86,7 @@ public class enemy : MonoBehaviour
 
     private Vector3 GetCurrentState()
     {
-        GameObject player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player");
         distanceToPlayer = player ? Vector3.Distance(transform.position, player.transform.position) : float.MaxValue;
         float healthPercentage = currentHealth / enemyHealth.health;
         distanceToPatrolPoint = Vector3.Distance(transform.position, target.position);
@@ -83,19 +94,33 @@ public class enemy : MonoBehaviour
         return new Vector3(distanceToPlayer, healthPercentage, distanceToPatrolPoint);
     }
 
-    /* public void TakeDamage(float damageAmount)
+    // Method to update node parameters if they change in the inspector
+    public void UpdateNodeParameters()
     {
-        currentHealth -= damageAmount;
-        if(currentHealth <= 0)
+        if (wolves != null && wolves.Count >= 3)
         {
-            Die();
+            // Update AttackPlayer node
+            if (wolves[0] is AttackPlayer attackNode)
+            {
+                attackNode.UpdateParameters(attackRange, attackCD);
+            }
+            
+            // Update ChasePlayer node
+            if (wolves[1] is ChasePlayer chaseNode)
+            {
+                chaseNode.UpdateParameters(aggroRange, newDestinationCD);
+            }
         }
     }
 
-    private void Die()
+    // Call this in editor to apply changes made in inspector
+    public void OnValidate()
     {
-        Destroy(gameObject);
-    } */
+        if (Application.isPlaying)
+        {
+            UpdateNodeParameters();
+        }
+    }
 
     public float GetMemoryUsage()
     {
@@ -117,5 +142,16 @@ public class enemy : MonoBehaviour
         memory += sizeof(float) * 3; // currentState (Vector3 = 3 floats)
         
         return memory;
+    }
+    
+    private void OnDrawGizmos()
+    {
+        // Draw attack range
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        
+        // Draw aggro/detection range
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, aggroRange);
     }
 }

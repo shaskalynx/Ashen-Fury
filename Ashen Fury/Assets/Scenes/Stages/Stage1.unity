@@ -1514,6 +1514,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy FINAL (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2609,6 +2613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy FINAL (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3647,11 +3655,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 668735768885291391, guid: 91ad7bf144749b04ab484a680630a040, type: 3}
   m_PrefabInstance: {fileID: 264780622}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &269549291 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2883212930928911224, guid: a02fd4cd52bf1cb47b34ba63237c5fbc, type: 3}
-  m_PrefabInstance: {fileID: 2057692966}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &274337947
 PrefabInstance:
@@ -5222,6 +5225,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy FINAL (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6226,6 +6233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy FINAL (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7025,7 +7036,7 @@ PrefabInstance:
     - target: {fileID: 2941537650618885258, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 269549291}
+      objectReference: {fileID: 1257004327}
     - target: {fileID: 8825242935035494768, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
       propertyPath: m_LocalPosition.x
       value: 64.1518
@@ -10192,6 +10203,10 @@ PrefabInstance:
     - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
       propertyPath: m_Name
       value: Enemy FINAL (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15625,6 +15640,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy FINAL (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18325,6 +18344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy FINAL (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20126,6 +20149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy FINAL (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21255,7 +21282,7 @@ PrefabInstance:
     - target: {fileID: 2941537650618885258, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 269549291}
+      objectReference: {fileID: 1257004327}
     - target: {fileID: 8825242935035494768, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
       propertyPath: m_LocalPosition.x
       value: 62.840702
@@ -24414,6 +24441,10 @@ PrefabInstance:
     - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
       propertyPath: m_Name
       value: Enemy FINAL (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978665129350749288, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28078,7 +28109,7 @@ PrefabInstance:
     - target: {fileID: 2941537650618885258, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 269549291}
+      objectReference: {fileID: 1257004327}
     - target: {fileID: 8825242935035494768, guid: 3b1794aecbdbb7643842003530d46174, type: 3}
       propertyPath: m_LocalPosition.x
       value: 66.78466
