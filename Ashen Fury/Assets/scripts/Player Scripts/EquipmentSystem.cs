@@ -9,7 +9,7 @@ public class EquipmentSystem : MonoBehaviour
     [SerializeField] GameObject weaponSheath;
  
  
-    GameObject currentWeaponInHand;
+    public GameObject currentWeaponInHand;
     GameObject currentWeaponInSheath;
     void Start()
     {
