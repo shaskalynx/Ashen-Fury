@@ -3,7 +3,7 @@ using UnityEngine;
  
 public class DamageDealer : MonoBehaviour
 {
-    bool canDealDamage;
+    public bool canDealDamage;
     List<GameObject> hasDealtDamage;
  
     [SerializeField] float weaponLength;
