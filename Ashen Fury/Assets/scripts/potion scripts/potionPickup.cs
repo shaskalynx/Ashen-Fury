@@ -10,6 +10,7 @@ public class healPickup : MonoBehaviour
     public float healAmount = 10;
     public float buffDuration = 10;
     [SerializeField] private potionTypes type;
+    private UIController uiController;
 
     enum potionTypes
     {
@@ -22,6 +23,7 @@ public class healPickup : MonoBehaviour
     {
        player = GameObject.FindWithTag("Player"); 
        playerMaxHealth = player.GetComponent<HealthSystem>().health;
+       uiController = FindObjectOfType<UIController>();
     }
 
     private void Update() {
@@ -45,21 +47,31 @@ public class healPickup : MonoBehaviour
     private void heal(){
         //Debug.Log("the player should be healed" + "    Player max health is " + playerMaxHealth);
         if(playerHealth < playerMaxHealth){
-            player.GetComponent<HealthSystem>().health += healAmount;
-
-            if(player.GetComponent<HealthSystem>().health > playerMaxHealth){
-                player.GetComponent<HealthSystem>().health = playerMaxHealth;
+            player.GetComponent<HealthSystem>().Heal(healAmount);
+            if (uiController != null)
+            {
+                uiController.ShowPickupMessage($"Health restored: +{healAmount}");
             }
             Destroy(gameObject);
             //Debug.Log("Player healed for " + healAmount + " health");
             //Debug.Log("Player health is now " + player.GetComponent<HealthSystem>().health);
-        }else{
+        }
+        else
+        {
+            if (uiController != null)
+            {
+                uiController.ShowPickupMessage("Health is already full!");
+            }
             return;
         }
     }
 
     private void powerUp(){
         StartCoroutine(buffUp());
+        if (uiController != null)
+        {
+            uiController.ShowPickupMessage($"Power Up! Damage increased for {buffDuration} seconds");
+        }
         Destroy(gameObject);
     }
 
