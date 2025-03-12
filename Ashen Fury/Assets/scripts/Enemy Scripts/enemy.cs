@@ -28,6 +28,9 @@ public class enemy : MonoBehaviour
     [SerializeField] public float distanceToPlayer;
     [SerializeField] public float distanceToPatrolPoint;
 
+    [Header("Sound System")]
+    [SerializeField] private EnemySoundManager soundManager;
+
     enemyHealthSystem enemyHealth;
     GameObject player;
 
@@ -37,12 +40,22 @@ public class enemy : MonoBehaviour
         enemyHealth = GetComponent<enemyHealthSystem>();
         player = GameObject.FindWithTag("Player");
         currentDestinationCD = 0;
+        
+        // Get sound manager if not assigned
+        if (soundManager == null)
+        {
+            soundManager = GetComponent<EnemySoundManager>();
+            if (soundManager == null)
+            {
+                soundManager = gameObject.AddComponent<EnemySoundManager>();
+            }
+        }
 
         wolves = new List<Node>
         {
-            new AttackPlayer(agent, attackRange, attackCD),
-            new ChasePlayer(agent, aggroRange, newDestinationCD),
-            new Patrol(agent, target),
+            new AttackPlayer(agent, attackRange, attackCD, soundManager),
+            new ChasePlayer(agent, aggroRange, newDestinationCD, soundManager),
+            new Patrol(agent, target, soundManager),
         };
 
         gwo = new GreyWolfOptimizer(wolves);

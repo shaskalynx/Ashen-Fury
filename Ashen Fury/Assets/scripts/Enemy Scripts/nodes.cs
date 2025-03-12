@@ -10,6 +10,7 @@ public abstract class Node
     public float fitness;
     public float position; // Single value representing the position of the node in the tree
     public string name;
+    protected EnemySoundManager soundManager;
 
     public virtual void CalculateFitness(Vector3 currentState)
     {
@@ -44,11 +45,12 @@ public class AttackPlayer : Node
     private float currentCooldown = 0f;
     private GameObject player;
     
-    public AttackPlayer(NavMeshAgent agent, float attackRange, float attackCooldown)
+    public AttackPlayer(NavMeshAgent agent, float attackRange, float attackCooldown, EnemySoundManager soundManager = null)
     {
         this.agent = agent;
         this.attackRange = attackRange;
         this.attackCooldown = attackCooldown;
+        this.soundManager = soundManager;
         this.name = "AttackPlayer";
     }
     
@@ -121,12 +123,14 @@ public class ChasePlayer : Node
     private float aggroRange;
     private float newDestinationCD;
     private float currentDestinationCD = 0f;
+    private bool wasChasing = false;
     
-    public ChasePlayer(NavMeshAgent agent, float aggroRange, float newDestinationCD)
+    public ChasePlayer(NavMeshAgent agent, float aggroRange, float newDestinationCD, EnemySoundManager soundManager = null)
     {
         this.agent = agent;
         this.aggroRange = aggroRange;
         this.newDestinationCD = newDestinationCD;
+        this.soundManager = soundManager;
         this.name = "ChasePlayer";
     }
     
@@ -149,6 +153,13 @@ public class ChasePlayer : Node
 
         if(distanceToPlayer <= aggroRange)
         {
+            // Play alerted sound when first starting to chase
+            if (!wasChasing && soundManager != null)
+            {
+                soundManager.PlayAlerted();
+                wasChasing = true;
+            }
+            
             // Only set new destination when cooldown is finished
             if (currentDestinationCD <= 0)
             {
@@ -162,6 +173,8 @@ public class ChasePlayer : Node
             return agent.remainingDistance > agent.stoppingDistance ? 
                    NodeState.running : NodeState.success;
         }
+        
+        wasChasing = false;
         return NodeState.fail;
     }
 
@@ -192,9 +205,10 @@ public class Patrol : Node
     private int maxPathRetries = 5;         // Maximum attempts to find new path
     private int pathRetryCount = 0;
 
-    public Patrol(NavMeshAgent agent, Transform target)
+    public Patrol(NavMeshAgent agent, Transform target, EnemySoundManager soundManager = null)
     {
         this.agent = agent;
+        this.soundManager = soundManager;
         this.name = "Patrol";
         lastPosition = agent.transform.position;
     }
