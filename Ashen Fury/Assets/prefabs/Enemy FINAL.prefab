@@ -3999,7 +3999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec64fd0f1771b144b78d51c66a08bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 10
   hitVFX: {fileID: 1743637094903878, guid: 021a2f7a2c5bc4449b4c64a66a050e8c, type: 3}
   ragdoll: {fileID: 1808333587136242448, guid: 4fa82707331524b4d9575e816d8c8f2d, type: 3}
 --- !u!114 &5134337563853177548
