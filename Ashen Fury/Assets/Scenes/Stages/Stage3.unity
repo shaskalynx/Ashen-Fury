@@ -7145,7 +7145,7 @@ MonoBehaviour:
   pauseCanvas: {fileID: 1727897725}
   stageLoader: {fileID: 706945862}
   pickupMessageText: {fileID: 912123671}
-  messageDuration: 2
+  messageDuration: 5
 --- !u!1001 &375505461
 PrefabInstance:
   m_ObjectHideFlags: 0

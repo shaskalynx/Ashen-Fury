@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4471817523490444186}
   - component: {fileID: 1027662752936923096}
   - component: {fileID: 9173800968196878352}
+  - component: {fileID: 8683320462312739536}
   m_Layer: 0
   m_Name: healPickup
   m_TagString: RedPotion
@@ -72,6 +73,21 @@ MonoBehaviour:
   healAmount: 10
   buffDuration: 10
   type: 0
+--- !u!114 &8683320462312739536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035877069046284918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9b2bf76c4e5b44ca3751a91debc3af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatHeight: 0.05
+  floatSpeed: 1.5
+  rotationSpeed: 50
 --- !u!1001 &4330032554674934717
 PrefabInstance:
   m_ObjectHideFlags: 0

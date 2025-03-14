@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6543602180586718457}
   - component: {fileID: 4269531943931398652}
   - component: {fileID: 3614894862160589}
+  - component: {fileID: 3442448086818181496}
   m_Layer: 0
   m_Name: buffPickup
   m_TagString: RedPotion
@@ -72,6 +73,21 @@ MonoBehaviour:
   healAmount: 10
   buffDuration: 10
   type: 1
+--- !u!114 &3442448086818181496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000225750641022174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9b2bf76c4e5b44ca3751a91debc3af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatHeight: 0.05
+  floatSpeed: 1.5
+  rotationSpeed: 50
 --- !u!1001 &1099334693799984954
 PrefabInstance:
   m_ObjectHideFlags: 0

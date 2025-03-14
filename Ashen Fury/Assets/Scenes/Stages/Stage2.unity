@@ -14520,6 +14520,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfea581b8e1cb048a5e1859088f259d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  victoryCanvas: {fileID: 1911354734}
+  defeatCanvas: {fileID: 1035384230}
+  pauseCanvas: {fileID: 110060556}
+  stageLoader: {fileID: 1757045097}
+  pickupMessageText: {fileID: 1782849212}
+  messageDuration: 5
 --- !u!1001 &614313008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47413,6 +47419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5dd449bf1af604eafb471fc471c2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiController: {fileID: 612035397}
+  congratulatoryText: {fileID: 1152888}
 --- !u!1001 &1350799533
 PrefabInstance:
   m_ObjectHideFlags: 0
