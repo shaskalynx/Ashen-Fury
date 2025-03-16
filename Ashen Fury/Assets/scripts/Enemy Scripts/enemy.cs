@@ -17,12 +17,6 @@ public class enemy : MonoBehaviour
     [SerializeField] public float newDestinationCD = 0.5f;
     private float currentDestinationCD;
 
-    [Header("Health")]
-    [SerializeField] public float health = 100f;
-    public float currentHealth;
-    public Vector3 currentState;
-    public NodeState result;
-
     [Header("Status")]
     [SerializeField] public string stateName;
     [SerializeField] public float distanceToPlayer;
@@ -33,6 +27,10 @@ public class enemy : MonoBehaviour
 
     enemyHealthSystem enemyHealth;
     GameObject player;
+
+    // Declare currentState and result as class-level variables
+    private Vector3 currentState;
+    private NodeState result;
 
     void Start()
     {
@@ -59,7 +57,6 @@ public class enemy : MonoBehaviour
         };
 
         gwo = new GreyWolfOptimizer(wolves);
-        currentHealth = enemyHealth.health;
     }
 
     void Update()
@@ -83,7 +80,7 @@ public class enemy : MonoBehaviour
                     stateName = behavior.node.name;
                     Debug.Log($"Enemy performing: {behavior.node.name} " +
                              $"(Weight: {behavior.weight:F2}, Position: {behavior.node.position:F2}, " +
-                             $"Health: {currentHealth/health:F2}, " +
+                             $"Health: {enemyHealth.health:F2}, " +
                              $"Distance: {currentState.x:F2})"); 
                     break;
                 }
@@ -101,7 +98,7 @@ public class enemy : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         distanceToPlayer = player ? Vector3.Distance(transform.position, player.transform.position) : float.MaxValue;
-        float healthPercentage = currentHealth / enemyHealth.health;
+        float healthPercentage = enemyHealth.health / 100f; // Assuming max health is 100
         distanceToPatrolPoint = Vector3.Distance(transform.position, target.position);
 
         return new Vector3(distanceToPlayer, healthPercentage, distanceToPatrolPoint);

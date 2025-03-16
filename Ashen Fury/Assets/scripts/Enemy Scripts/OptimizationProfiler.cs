@@ -301,24 +301,48 @@ public class OptimizationProfiler : MonoBehaviour
     }
 
     private Vector3 GetCurrentState(MonoBehaviour enemy)
+{
+    GameObject player = GameObject.FindWithTag("Player");
+    float distanceToPlayer = player ? 
+        Vector3.Distance(enemy.transform.position, player.transform.position) : 
+        float.MaxValue;
+    
+    float healthPercentage = 1.0f;
+    if (enemy is enemy gwo)
     {
-        GameObject player = GameObject.FindWithTag("Player");
-        float distanceToPlayer = player ? 
-            Vector3.Distance(enemy.transform.position, player.transform.position) : 
-            float.MaxValue;
-        
-        float healthPercentage = 1.0f;
-        if (enemy is enemy gwo) healthPercentage = gwo.currentHealth / gwo.health;
-        else if (enemy is enemyPSO pso) healthPercentage = pso.currentHealth / pso.health;
-        else if (enemy is enemyFA fa) healthPercentage = fa.currentHealth / fa.health;
-
-        float distanceToPatrolPoint = Vector3.Distance(
-            enemy.transform.position, 
-            enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().destination
-        );
-
-        return new Vector3(distanceToPlayer, healthPercentage, distanceToPatrolPoint);
+        // Use enemyHealthSystem to get health information
+        var healthSystem = gwo.GetComponent<enemyHealthSystem>();
+        if (healthSystem != null)
+        {
+            healthPercentage = healthSystem.health / 100f; // Assuming max health is 100
+        }
     }
+    else if (enemy is enemyPSO pso)
+    {
+        // Use enemyHealthSystem to get health information
+        var healthSystem = pso.GetComponent<enemyHealthSystem>();
+        if (healthSystem != null)
+        {
+            healthPercentage = healthSystem.health / 100f; // Assuming max health is 100
+        }
+    }
+    else if (enemy is enemyFA fa)
+    {
+        // Use enemyHealthSystem to get health information
+        var healthSystem = fa.GetComponent<enemyHealthSystem>();
+        if (healthSystem != null)
+        {
+            healthPercentage = healthSystem.health / 100f; // Assuming max health is 100
+        }
+    }
+
+    float distanceToPatrolPoint = Vector3.Distance(
+        enemy.transform.position, 
+        enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().destination
+    );
+
+    return new Vector3(distanceToPlayer, healthPercentage, distanceToPatrolPoint);
+}
 
     void OnGUI()
     {

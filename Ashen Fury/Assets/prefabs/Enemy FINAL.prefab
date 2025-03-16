@@ -3951,10 +3951,6 @@ MonoBehaviour:
   attackRange: 3
   attackCD: 3
   newDestinationCD: 0.5
-  health: 100
-  currentHealth: 0
-  currentState: {x: 0, y: 0, z: 0}
-  result: 0
   stateName: 
   distanceToPlayer: 0
   distanceToPatrolPoint: 0
