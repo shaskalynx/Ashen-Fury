@@ -9,25 +9,30 @@ public class StageLoader : MonoBehaviour
         // Get the current scene name
         string currentSceneName = SceneManager.GetActiveScene().name;
 
-        // Extract the stage number from the scene name
-        if (currentSceneName.StartsWith("Stage"))
+        // Check if the scene name follows any of the supported formats
+        if (currentSceneName.StartsWith("EASY_Stage") || 
+            currentSceneName.StartsWith("MEDIUM_Stage") || 
+            currentSceneName.StartsWith("HARD_Stage"))
         {
-            // Get the stage number (e.g., "Stage1" -> 1)
-            string stageNumberString = currentSceneName.Substring(5); // Remove "Stage" from the name
+            // Extract the stage number from the scene name
+            string stageNumberString = currentSceneName.Substring(currentSceneName.LastIndexOf('e') + 1); // Get the number after the last 'e'
             if (int.TryParse(stageNumberString, out int currentStage))
             {
                 // Increment the stage number
                 int nextStage = currentStage + 1;
 
-                // Check if the next stage exceeds the maximum number of stages (e.g., 4)
-                if (nextStage > 4)
+                // Determine the maximum number of stages based on the difficulty
+                int maxStages = 4; // Default to 4 stages
+
+                // Check if the next stage exceeds the maximum number of stages
+                if (nextStage > maxStages)
                 {
-                    Debug.Log("All stages completed! Returning to Stage 1.");
-                    nextStage = 1; // Reset to Stage 1
+                    Debug.Log("All stages completed! Returning to the first stage.");
+                    nextStage = 1; // Reset to the first stage
                 }
 
                 // Load the next stage scene
-                string nextSceneName = "Stage" + nextStage;
+                string nextSceneName = currentSceneName.Substring(0, currentSceneName.LastIndexOf('e') + 1) + nextStage;
                 Debug.Log("Loading next stage: " + nextSceneName);
                 SceneManager.LoadScene(nextSceneName);
             }
@@ -38,7 +43,7 @@ public class StageLoader : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Current scene name does not follow the 'StageX' format: " + currentSceneName);
+            Debug.LogError("Current scene name does not follow the supported formats: " + currentSceneName);
         }
     }
 }

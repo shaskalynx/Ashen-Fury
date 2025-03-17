@@ -277,4 +277,60 @@ public class MenuController : MonoBehaviour
             stageSelectionPanel.SetActive(isVisible);
         }
     }
+
+    // New method to load Easy Stage1
+    public void LoadEasyStage1()
+    {
+        string stageName = "EASY_Stage1";
+        if (Application.CanStreamedLevelBeLoaded(stageName))
+        {
+            SceneManager.LoadScene(stageName);
+        }
+        else
+        {
+            Debug.LogError("Scene " + stageName + " does not exist or is not added to Build Settings.");
+        }
+    }
+
+    // New method to load Medium Stage1
+    public void LoadMediumStage1()
+    {
+        string stageName = "MEDIUM_Stage1";
+        if (Application.CanStreamedLevelBeLoaded(stageName))
+        {
+            SceneManager.LoadScene(stageName);
+        }
+        else
+        {
+            Debug.LogError("Scene " + stageName + " does not exist or is not added to Build Settings.");
+        }
+    }
+
+    // New method to load Hard Stage1
+    public void LoadHardStage1()
+    {
+        string stageName = "HARD_Stage1";
+        if (Application.CanStreamedLevelBeLoaded(stageName))
+        {
+            SceneManager.LoadScene(stageName);
+        }
+        else
+        {
+            Debug.LogError("Scene " + stageName + " does not exist or is not added to Build Settings.");
+        }
+    }
+
+    // New method to load tutorial stage
+    public void LoadTutorialStage()
+    {
+        string stageName = "Tutorial";
+        if (Application.CanStreamedLevelBeLoaded(stageName))
+        {
+            SceneManager.LoadScene(stageName);
+        }
+        else
+        {
+            Debug.LogError("Scene " + stageName + " does not exist or is not added to Build Settings.");
+        }
+    }
 }
