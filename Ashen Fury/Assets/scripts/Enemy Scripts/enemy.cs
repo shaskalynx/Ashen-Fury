@@ -78,10 +78,10 @@ public class enemy : MonoBehaviour
                 {
                     behaviorExecuted = true;
                     stateName = behavior.node.name;
-                    Debug.Log($"Enemy performing: {behavior.node.name} " +
+                    /*Debug.Log($"Enemy performing: {behavior.node.name} " +
                              $"(Weight: {behavior.weight:F2}, Position: {behavior.node.position:F2}, " +
                              $"Health: {enemyHealth.health:F2}, " +
-                             $"Distance: {currentState.x:F2})"); 
+                             $"Distance: {currentState.x:F2})");*/ 
                     break;
                 }
             }
