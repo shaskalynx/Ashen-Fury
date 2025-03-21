@@ -9,7 +9,8 @@ public class ObjectiveSystem : MonoBehaviour
 
     [SerializeField] private UIController uiController;
 
-    [SerializeField] private TextMeshProUGUI congratulatoryText; // Reference to the TextMeshPro UI element
+    [SerializeField] private TextMeshProUGUI objectiveText; // Reference to the TextMeshPro UI element for the objective message
+    [SerializeField] private float objectiveDisplayTime = 3f; // How long the objective text is displayed
 
     void Start()
     {
@@ -18,6 +19,18 @@ public class ObjectiveSystem : MonoBehaviour
         enemies.AddRange(enemyObjects);
 
         Debug.Log($"Total enemies in scene: {enemies.Count}");
+
+        // Display the objective text when the stage starts
+        if (objectiveText != null)
+        {
+            objectiveText.text = "Objective: Defeat all enemies in the area.";
+            objectiveText.gameObject.SetActive(true); // Show the objective text
+            StartCoroutine(HideObjectiveTextAfterDelay(objectiveDisplayTime)); // Hide the text after a delay
+        }
+        else
+        {
+            Debug.LogWarning("Objective Text reference is missing!");
+        }
     }
 
     void Update()
@@ -36,14 +49,30 @@ public class ObjectiveSystem : MonoBehaviour
         {
             if (uiController != null)
             {
-                uiController.ShowCongratulatoryMessage(); // Call the UI controller to show the message
+                uiController.ShowCongratulatoryMessage(); // Call the UI controller to show the congratulatory message
             }
             else
             {
                 Debug.LogWarning("UIController reference is missing!");
             }
 
+            // Hide the objective text when all enemies are defeated
+            if (objectiveText != null)
+            {
+                objectiveText.gameObject.SetActive(false);
+            }
+
             enabled = false; // Disable the script to stop checking
+        }
+    }
+
+    // Coroutine to hide the objective text after a delay
+    private IEnumerator HideObjectiveTextAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (objectiveText != null)
+        {
+            objectiveText.gameObject.SetActive(false); // Hide the objective text
         }
     }
 }
