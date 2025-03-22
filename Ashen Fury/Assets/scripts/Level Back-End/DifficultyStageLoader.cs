@@ -9,8 +9,6 @@ public class DifficultyStageLoader : MonoBehaviour
     [SerializeField] private TMP_Dropdown difficultyDropdown; // Dropdown for difficulty selection
     [SerializeField] private Button[] stageButtons;           // Buttons for stage selection
 
-    private string selectedDifficulty = "EASY"; // Default difficulty
-
     private void Start()
     {
         // Initialize difficulty dropdown listener
@@ -23,7 +21,7 @@ public class DifficultyStageLoader : MonoBehaviour
         for (int i = 0; i < stageButtons.Length; i++)
         {
             int stageNumber = i + 1; // Stage numbers start from 1
-            stageButtons[i].onClick.AddListener(() => LoadStage(selectedDifficulty, stageNumber));
+            stageButtons[i].onClick.AddListener(() => LoadStage(stageNumber));
         }
     }
 
@@ -31,29 +29,34 @@ public class DifficultyStageLoader : MonoBehaviour
     private void OnDifficultyChanged(int index)
     {
         // Update the selected difficulty based on the dropdown value
+        DifficultyLoader.Difficulty selectedDifficulty;
         switch (index)
         {
             case 0:
-                selectedDifficulty = "EASY";
+                selectedDifficulty = DifficultyLoader.Difficulty.Easy;
                 break;
             case 1:
-                selectedDifficulty = "MEDIUM";
+                selectedDifficulty = DifficultyLoader.Difficulty.Medium;
                 break;
             case 2:
-                selectedDifficulty = "HARD";
+                selectedDifficulty = DifficultyLoader.Difficulty.Hard;
                 break;
             default:
-                selectedDifficulty = "EASY"; // Default to Easy if something goes wrong
+                selectedDifficulty = DifficultyLoader.Difficulty.Easy; // Default to Easy if something goes wrong
                 break;
         }
+
+        // Set the selected difficulty using the DifficultyLoader
+        DifficultyLoader.SetDifficulty(selectedDifficulty);
     }
 
-    // Method to load a stage based on the selected difficulty and stage number
-    private void LoadStage(string difficulty, int stageNumber)
+    // Method to load a stage based on the selected stage number
+    private void LoadStage(int stageNumber)
     {
-        string stageName = $"{difficulty}_Stage{stageNumber}"; // Constructs the stage name (e.g., "EASY_Stage1")
+        string stageName = $"Stage{stageNumber}"; // Constructs the stage name (e.g., "Stage1")
         if (Application.CanStreamedLevelBeLoaded(stageName)) // Checks if the scene exists
         {
+            // Load the stage
             SceneManager.LoadScene(stageName);
         }
         else

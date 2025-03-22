@@ -278,7 +278,7 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    // New method to load Easy Stage1
+    /* New method to load Easy Stage1
     public void LoadEasyStage1()
     {
         string stageName = "EASY_Stage1";
@@ -318,7 +318,7 @@ public class MenuController : MonoBehaviour
         {
             Debug.LogError("Scene " + stageName + " does not exist or is not added to Build Settings.");
         }
-    }
+    } */
 
     // New method to load tutorial stage
     public void LoadTutorialStage()
@@ -332,5 +332,37 @@ public class MenuController : MonoBehaviour
         {
             Debug.LogError("Scene " + stageName + " does not exist or is not added to Build Settings.");
         }
+    }
+
+    public void SetDifficulty(DifficultyLoader.Difficulty difficulty)
+{
+    // Use FindFirstObjectByType for clarity and consistency
+    DifficultyLoader difficultyLoader = FindFirstObjectByType<DifficultyLoader>();
+    if (difficultyLoader != null)
+    {
+        difficultyLoader.LoadDifficulty(difficulty);
+    }
+    else
+    {
+        Debug.LogWarning("DifficultyLoader not found in the scene!");
+    }
+}
+
+    // Example: Set Easy difficulty when a button is clicked
+    public void OnEasyDifficultyButtonClicked()
+    {
+        SetDifficulty(DifficultyLoader.Difficulty.Easy);
+    }
+
+    // Example: Set Medium difficulty when a button is clicked
+    public void OnMediumDifficultyButtonClicked()
+    {
+        SetDifficulty(DifficultyLoader.Difficulty.Medium);
+    }
+
+    // Example: Set Hard difficulty when a button is clicked
+    public void OnHardDifficultyButtonClicked()
+    {
+        SetDifficulty(DifficultyLoader.Difficulty.Hard);
     }
 }
