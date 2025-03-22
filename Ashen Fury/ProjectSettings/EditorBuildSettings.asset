@@ -23,41 +23,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stages/Stage4.unity
     guid: da72447198eab6e42b938ec8bb3650c3
-  - enabled: 1
-    path: Assets/Scenes/Stages/Easy Stages/EASY_Stage1.unity
-    guid: db1ee74592ec9f94396eb2c567722bf6
-  - enabled: 1
-    path: Assets/Scenes/Stages/Easy Stages/EASY_Stage2.unity
-    guid: e2e10e640c12b4948883477b7124c47e
-  - enabled: 1
-    path: Assets/Scenes/Stages/Easy Stages/EASY_Stage3.unity
-    guid: e95c4773a2605be4a9e2b443c9e86df2
-  - enabled: 1
-    path: Assets/Scenes/Stages/Easy Stages/EASY_Stage4.unity
-    guid: 84140bcfbf6e500458b856ad5a9f18b4
-  - enabled: 1
-    path: Assets/Scenes/Stages/Medium Stages/MEDIUM_Stage1.unity
-    guid: c474a4ef514ed954698cc6cbe8358fa6
-  - enabled: 1
-    path: Assets/Scenes/Stages/Medium Stages/MEDIUM_Stage2.unity
-    guid: 959342bb7741c1f4eaff4fe006136529
-  - enabled: 1
-    path: Assets/Scenes/Stages/Medium Stages/MEDIUM_Stage3.unity
-    guid: 8077e0ca6f0a48e4b941397e4edfa7b2
-  - enabled: 1
-    path: Assets/Scenes/Stages/Medium Stages/MEDIUM_Stage4.unity
-    guid: ccfcc1cb9205a8840886d15a70cb25fa
-  - enabled: 1
-    path: Assets/Scenes/Stages/Hard Stages/HARD_Stage1.unity
-    guid: 35c1bb921275799449164cfadbedd99e
-  - enabled: 1
-    path: Assets/Scenes/Stages/Hard Stages/HARD_Stage2.unity
-    guid: 56d0b1905c5d7504fa4c450bb546a41a
-  - enabled: 1
-    path: Assets/Scenes/Stages/Hard Stages/HARD_Stage3.unity
-    guid: 40a5d0e372ae2ef49bc6019c364dc624
-  - enabled: 1
-    path: Assets/Scenes/Stages/Hard Stages/HARD_Stage4.unity
-    guid: 2772a45bd1573704a9aa25b6fe6a3c5e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

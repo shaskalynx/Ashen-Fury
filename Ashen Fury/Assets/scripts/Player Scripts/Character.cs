@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
     public float gravityMultiplier = 2;
     public float rotationSpeed = 5f;
     public float crouchColliderHeight = 1.35f;
+    public float dodgeDuration = 0.5f; // Add dodge duration
+    public float dodgeSpeed = 10.0f; // Add dodge speed
  
     [Header("Animation Smoothing")]
     [Range(0, 1)]
@@ -30,6 +32,7 @@ public class Character : MonoBehaviour
     public SprintJumpState sprintjumping;
     public CombatState combatting;
     public AttackState attacking;
+    public DodgeState dodging; // Add dodging state
  
     [HideInInspector]
     public float gravityValue = -9.81f;
@@ -75,6 +78,7 @@ public class Character : MonoBehaviour
         sprintjumping = new SprintJumpState(this, movementSM);
         combatting = new CombatState(this, movementSM);
         attacking = new AttackState(this, movementSM);
+        dodging = new DodgeState(this, movementSM); // Initialize dodging state
  
         movementSM.Initialize(standing);
  
