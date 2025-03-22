@@ -113,6 +113,8 @@ MonoBehaviour:
   gravityMultiplier: 2
   rotationSpeed: 5
   crouchColliderHeight: 1.35
+  dodgeDuration: 0.5
+  dodgeSpeed: 3
   speedDampTime: 0.1
   velocityDampTime: 0.1
   rotationDampTime: 0.2
@@ -162,6 +164,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 8518759977916421499}
   weapon: {fileID: 1037715513984232, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
   weaponSheath: {fileID: 3557176750177227829}
+  currentWeaponInHand: {fileID: 0}
 --- !u!114 &6261321881441652665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,9 +177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984ba9d5147bfdc44be5fbd8ceb07600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
+  maxHealth: 100
   hitVFX: {fileID: 1743637094903878, guid: 021a2f7a2c5bc4449b4c64a66a050e8c, type: 3}
   ragdoll: {fileID: 2963117298911199113}
+  healthBar: {fileID: 0}
+  uiController: {fileID: 0}
 --- !u!136 &1684841022812369598
 CapsuleCollider:
   m_ObjectHideFlags: 0

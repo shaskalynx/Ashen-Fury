@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 732601260185946584}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25340134, y: 0.000000064266, z: -0.00000001683455, w: 0.9673613}
-  m_LocalPosition: {x: 1.7724218, y: -1.2149701, z: -23.733404}
+  m_LocalPosition: {x: 24.974842, y: -1.2399402, z: -8.246806}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1199,17 +1199,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6261321881441652665, guid: 406d38a7670b46546b90daeb64698111, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6261321881441652665, guid: 406d38a7670b46546b90daeb64698111, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 159468185146768686}
-    - target: {fileID: 6261321881441652665, guid: 406d38a7670b46546b90daeb64698111, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 8084341320427237282, guid: 406d38a7670b46546b90daeb64698111, type: 3}
       propertyPath: soundManager
       value: 
