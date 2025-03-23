@@ -15,6 +15,9 @@ public class enemyHealthSystem : MonoBehaviour
     GameObject player;
     NavMeshAgent agent;
     Animator animator;
+    private enemy enemyScript; 
+    private 
+    //private animationHandler animationScript;
     //float timePassed;
     //float newDestinationCD = 0.5f;
  
@@ -23,6 +26,7 @@ public class enemyHealthSystem : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
+        enemyScript = GetComponent<enemy>();
     }
  
     // Update is called once per frame
@@ -64,8 +68,17 @@ public class enemyHealthSystem : MonoBehaviour
  
     void Die()
     {
-        Instantiate(ragdoll, transform.position,transform.rotation);
-        Destroy(this.gameObject);
+        if (ragdoll != null)
+        {
+            Instantiate(ragdoll, transform.position,transform.rotation);
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            enemyScript.enabled = false;
+            animator.SetTrigger("die");
+            gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        } 
     }
  
     public void TakeDamage(float damageAmount)

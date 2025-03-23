@@ -62,7 +62,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.2730721
+      - time: 0.20363812
         functionName: StartDealDamage
         data: 
         objectReferenceParameter: {instanceID: 0}
