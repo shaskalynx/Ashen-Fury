@@ -3946,15 +3946,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  agent: {fileID: 0}
-  aggroRange: 20
+  agent: {fileID: 5432609384937020950}
+  aggroRange: 15
   attackRange: 7
   attackCD: 2
   newDestinationCD: 0.5
   stateName: 
   distanceToPlayer: 0
   distanceToPatrolPoint: 0
-  soundManager: {fileID: 0}
+  soundManager: {fileID: 5134337563853177548}
 --- !u!114 &1873890231790799194
 MonoBehaviour:
   m_ObjectHideFlags: 0

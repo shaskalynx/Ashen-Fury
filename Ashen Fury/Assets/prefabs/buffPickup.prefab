@@ -54,8 +54,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 0.2
+  m_Radius: 0.3
+  m_Height: 0.3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3614894862160589
@@ -72,6 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healAmount: 10
   buffDuration: 10
+  buffAmount: 20
+  respawnTime: 5
   type: 1
 --- !u!114 &3442448086818181496
 MonoBehaviour:
