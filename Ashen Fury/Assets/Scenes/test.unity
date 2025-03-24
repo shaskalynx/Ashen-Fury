@@ -405,6 +405,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2750325051354645426, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
+      propertyPath: maxHealth
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 2829182774599495713, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -697,6 +701,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1109152583}
+    - target: {fileID: 3770878585066985337, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
+      propertyPath: attackRange
+      value: 3.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6395591681119790969, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
       propertyPath: m_Name
       value: eliteEnemy

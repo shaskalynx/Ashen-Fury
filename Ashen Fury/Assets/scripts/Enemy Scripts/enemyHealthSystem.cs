@@ -16,7 +16,7 @@ public class enemyHealthSystem : MonoBehaviour
     NavMeshAgent agent;
     Animator animator;
     private enemy enemyScript; 
-    private 
+
     //private animationHandler animationScript;
     //float timePassed;
     //float newDestinationCD = 0.5f;
