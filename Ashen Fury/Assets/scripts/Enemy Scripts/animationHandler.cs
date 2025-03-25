@@ -1,15 +1,19 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class animationHandler : MonoBehaviour
 {
     private Animator animator;
     private enemy enemystatus;
     private NavMeshAgent agent;
+    //private bool canRotate = true;
 
     private float atkCD = 3f;
     private float timePassed = 0f;
     private Vector3 currentPosition;
+    private bool isAttacking = false;
+    public bool IsAttacking => isAttacking;
 
     void Start()
     {
@@ -62,13 +66,26 @@ public class animationHandler : MonoBehaviour
         if (timePassed >= atkCD)
         {
             attack();
+           //StartCoroutine(DisableRotationDuringAttack());
             timePassed = 0;
             animator.SetFloat("Speed", 0f);
+            //agent.updateRotation = false; // Disable NavMesh rotation
         }
-        //RotateTowardsPlayer();
+        // Remove the rotation check from here
+        // if (canRotate) {
+        //     RotateTowardsPlayer();
+        // }
     }
 
-    /*private void RotateTowardsPlayer()
+    /* private IEnumerator DisableRotationDuringAttack()
+    {
+        canRotate = false;
+        yield return new WaitForSeconds(2f);
+        canRotate = true;
+        agent.updateRotation = true; // Re-enable NavMesh rotation
+    } 
+
+    private void RotateTowardsPlayer()
     {
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
@@ -82,7 +99,7 @@ public class animationHandler : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
             }
         }
-    }*/
+    } */
 
     public void TakeDamage()
     {
@@ -91,7 +108,15 @@ public class animationHandler : MonoBehaviour
 
     public void attack()
     {
+        isAttacking = true;
         animator.SetTrigger("attackPlayer");
+        StartCoroutine(ResetAttackState());
         Debug.Log("The animation should be playing");
+    }
+
+    private IEnumerator ResetAttackState()
+    {
+        yield return new WaitForSeconds(2f); // Adjust this to match your attack animation length
+        isAttacking = false;
     }
 }

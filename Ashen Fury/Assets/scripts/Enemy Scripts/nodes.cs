@@ -73,17 +73,18 @@ public class AttackPlayer : Node
 
         if(distanceToPlayer <= attackRange)
         {
-            // Use the RotateTowards method from the base class
-            RotateTowards(agent.transform, player.transform.position);
+            animationHandler animHandler = agent.GetComponent<animationHandler>();
+            
+            // Only rotate if not attacking
+            if (animHandler != null && !animHandler.IsAttacking)
+            {
+                RotateTowards(agent.transform, player.transform.position);
+            }
 
             // Only attack if cooldown is finished
             if (currentCooldown <= 0)
             {
-                // Reset cooldown and trigger attack
                 currentCooldown = attackCooldown;
-                
-                // Attack logic could call an animation or damage method here
-                animationHandler animHandler = agent.GetComponent<animationHandler>();
                 if (animHandler != null)
                 {
                     animHandler.attack();
