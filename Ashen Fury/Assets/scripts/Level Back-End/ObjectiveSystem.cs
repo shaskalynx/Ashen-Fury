@@ -38,9 +38,11 @@ public class ObjectiveSystem : MonoBehaviour
         // Check if any enemies have been destroyed
         for (int i = enemies.Count - 1; i >= 0; i--)
         {
-            if (enemies[i] == null) // If the enemy has been destroyed
+            if (enemies[i] == null || // Check for destroyed enemies
+                !enemies[i].activeInHierarchy || // Check for disabled GameObjects
+                !enemies[i].GetComponent<enemy>().enabled) // Check for disabled enemy script
             {
-                enemies.RemoveAt(i); // Remove it from the list
+                enemies.RemoveAt(i);
             }
         }
 

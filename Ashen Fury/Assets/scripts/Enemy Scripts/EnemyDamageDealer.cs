@@ -29,7 +29,7 @@ public class EnemyDamageDealer : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out HealthSystem health))
                 {
-                    print("it damaged you");
+                    //print("it damaged you");
                     health.TakeDamage(weaponDamage);
                     health.HitVFX(hit.point);
                     hasDealtDamage = true;
@@ -39,7 +39,7 @@ public class EnemyDamageDealer : MonoBehaviour
     }
     public void StartDealDamage()
     {
-        print("the enemy should damage you");
+        //print("the enemy should damage you");
         canDealDamage = true;
         hasDealtDamage = false;
     }

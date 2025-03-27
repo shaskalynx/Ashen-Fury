@@ -111,7 +111,7 @@ public class animationHandler : MonoBehaviour
         isAttacking = true;
         animator.SetTrigger("attackPlayer");
         StartCoroutine(ResetAttackState());
-        Debug.Log("The animation should be playing");
+        //Debug.Log("The animation should be playing");
     }
 
     private IEnumerator ResetAttackState()

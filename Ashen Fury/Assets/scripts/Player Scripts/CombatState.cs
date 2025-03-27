@@ -16,7 +16,7 @@ public class CombatState : State
     {
         character = _character;
         stateMachine = _stateMachine;
-        dodgeAction = character.playerInput.actions["Dodge"]; // Initialize dodge action
+        dodgeAction = character.playerInput.actions["Dodge"];
     }
 
     public override void Enter()
@@ -40,27 +40,14 @@ public class CombatState : State
     {
         base.HandleInput();
 
-        if (drawWeaponAction.triggered)
-        {
-            sheathWeapon = true;
-        }
-
-        if (attackAction.triggered)
-        {
-            attack = true;
-        }
-
-        if (dodgeAction.triggered)
-        {
-            dodge = true;
-        }
+        if (drawWeaponAction.triggered) sheathWeapon = true;
+        if (attackAction.triggered) attack = true;
+        if (dodgeAction.triggered) dodge = true;
 
         input = moveAction.ReadValue<Vector2>();
         velocity = new Vector3(input.x, 0, input.y);
-
         velocity = velocity.x * character.cameraTransform.right.normalized + velocity.z * character.cameraTransform.forward.normalized;
         velocity.y = 0f;
-
     }
 
     public override void LogicUpdate()
@@ -77,14 +64,43 @@ public class CombatState : State
 
         if (attack)
         {
+            Transform nearestEnemy = FindNearestEnemy();
+            if (nearestEnemy != null)
+            {
+                // Force immediate rotation toward the enemy (ignoring current facing direction)
+                Vector3 directionToEnemy = nearestEnemy.position - character.transform.position;
+                directionToEnemy.y = 0; // Keep rotation horizontal
+                character.transform.rotation = Quaternion.LookRotation(directionToEnemy);
+            }
+
             character.animator.SetTrigger("attack");
             stateMachine.ChangeState(character.attacking);
         }
 
-        if (dodge)
+        if (dodge) stateMachine.ChangeState(character.dodging);
+    }
+
+    // Finds the closest enemy within range, regardless of direction
+    private Transform FindNearestEnemy()
+    {
+        float detectionRadius = 5f; // Adjust based on your game's scale
+        Collider[] hitColliders = Physics.OverlapSphere(character.transform.position, detectionRadius);
+        Transform nearestEnemy = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (var hitCollider in hitColliders)
         {
-            stateMachine.ChangeState(character.dodging);
+            if (hitCollider.CompareTag("Enemy")) // Adjust tag if needed
+            {
+                float distance = Vector3.Distance(character.transform.position, hitCollider.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    nearestEnemy = hitCollider.transform;
+                }
+            }
         }
+        return nearestEnemy;
     }
 
     public override void PhysicsUpdate()
@@ -94,25 +110,21 @@ public class CombatState : State
         gravityVelocity.y += gravityValue * Time.deltaTime;
         grounded = character.controller.isGrounded;
 
-        if (grounded && gravityVelocity.y < 0)
-        {
-            gravityVelocity.y = 0f;
-        }
+        if (grounded && gravityVelocity.y < 0) gravityVelocity.y = 0f;
 
         currentVelocity = Vector3.SmoothDamp(currentVelocity, velocity, ref cVelocity, character.velocityDampTime);
         character.controller.Move(currentVelocity * Time.deltaTime * playerSpeed + gravityVelocity * Time.deltaTime);
 
-        if (velocity.sqrMagnitude > 0)
+        // Only rotate when moving (not attacking)
+        if (velocity.sqrMagnitude > 0 && !attack)
         {
             character.transform.rotation = Quaternion.Slerp(character.transform.rotation, Quaternion.LookRotation(velocity), character.rotationDampTime);
         }
-
     }
 
     public override void Exit()
     {
         base.Exit();
-
         gravityVelocity.y = 0f;
         character.playerVelocity = new Vector3(input.x, 0, input.y);
 
@@ -120,7 +132,5 @@ public class CombatState : State
         {
             character.transform.rotation = Quaternion.LookRotation(velocity);
         }
-
     }
-
 }

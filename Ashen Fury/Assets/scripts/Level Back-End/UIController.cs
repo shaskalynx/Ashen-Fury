@@ -3,110 +3,123 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.InputSystem;
+using Unity.Cinemachine;
 
 public class UIController : MonoBehaviour
 {
     [Header("UI Canvases")]
-    [SerializeField] private GameObject victoryCanvas;    // Canvas containing victory UI
-    [SerializeField] private GameObject defeatCanvas;     // Canvas containing defeat UI
-    [SerializeField] private GameObject pauseCanvas;      // Canvas containing pause menu UI
+    [SerializeField] private GameObject victoryCanvas;
+    [SerializeField] private GameObject defeatCanvas;
+    [SerializeField] private GameObject pauseCanvas;
 
     [Header("Stage Loading")]
     [SerializeField] private StageLoader stageLoader;
 
     [Header("Pickup Notifications")]
-    [SerializeField] private TextMeshProUGUI pickupMessageText;    // Reference to notification text
-    [SerializeField] private float messageDuration = 2f;           // How long the message stays visible
+    [SerializeField] private TextMeshProUGUI pickupMessageText;
+    [SerializeField] private float messageDuration = 2f;
 
+    private PlayerInput playerInput;
+    private CinemachineBrain cinemachineBrain;
     private bool isPaused = false;
-    private bool isGameOver = false; // New flag to track game over state
+    private bool isGameOver = false;
+
+    void Awake()
+    {
+        // Find required components automatically
+        playerInput = FindObjectOfType<PlayerInput>();
+        cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
+
+        if (playerInput == null) Debug.LogWarning("PlayerInput component not found!");
+        if (cinemachineBrain == null) Debug.LogWarning("CinemachineBrain component not found!");
+    }
 
     void Update()
     {
-        // Only allow pause menu if game is not over
         if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
         {
-            if (isPaused)
-                ResumeGame();
-            else
-                PauseGame();
+            TogglePause();
         }
     }
 
+    #region Game State Control
     public void PauseGame()
     {
         isPaused = true;
-        Time.timeScale = 0f; // Freeze game time
+        Time.timeScale = 0f;
         pauseCanvas.SetActive(true);
-        Cursor.visible = true;
+        SetCursorState(true);
+        DisableAllControls();
     }
 
     public void ResumeGame()
     {
         isPaused = false;
-        Time.timeScale = 1f; // Resume game time
+        Time.timeScale = 1f;
         pauseCanvas.SetActive(false);
-        Cursor.visible = false;
+        SetCursorState(false);
+        EnableAllControls();
     }
 
     public void ShowCongratulatoryMessage()
     {
-        if (victoryCanvas != null)
-        {
-            isGameOver = true; // Set game over state
-            
-            Cursor.visible = true;
-            victoryCanvas.SetActive(true);
-            
-            // If pause menu is open, close it
-            if (isPaused)
-            {
-                pauseCanvas.SetActive(false);
-                isPaused = false;
-            }
-            
-            // Get the text component from the victory canvas and fade it in
-            TextMeshProUGUI victoryText = victoryCanvas.GetComponentInChildren<TextMeshProUGUI>();
-            if (victoryText != null)
-            {
-                StartCoroutine(FadeInText(victoryText, 2f));
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Victory Canvas reference is missing!");
-        }
+        if (victoryCanvas == null) return;
+        
+        isGameOver = true;
+        victoryCanvas.SetActive(true);
+        SetCursorState(true);
+        DisableAllControls();
+
+        if (isPaused) ResumeGame(); // Auto-exit pause if game over
+        
+        TextMeshProUGUI victoryText = victoryCanvas.GetComponentInChildren<TextMeshProUGUI>();
+        if (victoryText != null) StartCoroutine(FadeInText(victoryText, 2f));
     }
 
     public void ShowDefeatMessage()
     {
-        if (defeatCanvas != null)
-        {
-            isGameOver = true; // Set game over state
-            
-            Cursor.visible = true;
-            defeatCanvas.SetActive(true);
-            
-            // If pause menu is open, close it
-            if (isPaused)
-            {
-                pauseCanvas.SetActive(false);
-                isPaused = false;
-            }
-            
-            // Get the text component from the defeat canvas and fade it in
-            TextMeshProUGUI defeatText = defeatCanvas.GetComponentInChildren<TextMeshProUGUI>();
-            if (defeatText != null)
-            {
-                StartCoroutine(FadeInText(defeatText, 2f));
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Defeat Canvas reference is missing!");
-        }
+        if (defeatCanvas == null) return;
+        
+        isGameOver = true;
+        defeatCanvas.SetActive(true);
+        SetCursorState(true);
+        DisableAllControls();
+
+        if (isPaused) ResumeGame(); // Auto-exit pause if game over
+        
+        TextMeshProUGUI defeatText = defeatCanvas.GetComponentInChildren<TextMeshProUGUI>();
+        if (defeatText != null) StartCoroutine(FadeInText(defeatText, 2f));
+    }
+    #endregion
+
+    #region Control Management
+    private void DisableAllControls()
+    {
+        // Player input
+        if (playerInput != null) playerInput.enabled = false;
+        
+        // Camera control
+        if (cinemachineBrain != null) cinemachineBrain.enabled = false;
     }
 
+    private void EnableAllControls()
+    {
+        // Player input
+        if (playerInput != null) playerInput.enabled = true;
+        
+        // Camera control
+        if (cinemachineBrain != null) cinemachineBrain.enabled = true;
+    }
+
+    private void SetCursorState(bool visible)
+    {
+        Cursor.visible = visible;
+        Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+    #endregion
+
+    #region UI Effects
     private IEnumerator FadeInText(TextMeshProUGUI text, float duration)
     {
         float elapsedTime = 0;
@@ -117,19 +130,17 @@ public class UIController : MonoBehaviour
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            float alpha = Mathf.Clamp01(elapsedTime / duration);
-            text.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            text.color = new Color(startColor.r, startColor.g, startColor.b, Mathf.Clamp01(elapsedTime / duration));
             yield return null;
         }
     }
 
     public void ShowPickupMessage(string message)
     {
-        if (pickupMessageText != null)
-        {
-            StopAllCoroutines(); // Stop any existing fade coroutines
-            StartCoroutine(ShowTemporaryMessage(message));
-        }
+        if (pickupMessageText == null) return;
+        
+        StopAllCoroutines();
+        StartCoroutine(ShowTemporaryMessage(message));
     }
 
     private IEnumerator ShowTemporaryMessage(string message)
@@ -137,13 +148,8 @@ public class UIController : MonoBehaviour
         pickupMessageText.text = message;
         pickupMessageText.gameObject.SetActive(true);
         
-        // Fade in
         yield return StartCoroutine(FadeInText(pickupMessageText, 0.5f));
-        
-        // Wait
         yield return new WaitForSeconds(messageDuration);
-        
-        // Fade out
         yield return StartCoroutine(FadeOutText(pickupMessageText, 0.5f));
         
         pickupMessageText.gameObject.SetActive(false);
@@ -159,30 +165,38 @@ public class UIController : MonoBehaviour
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            float alpha = 1 - Mathf.Clamp01(elapsedTime / duration);
-            text.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            text.color = new Color(startColor.r, startColor.g, startColor.b, 1 - Mathf.Clamp01(elapsedTime / duration));
             yield return null;
         }
     }
+    #endregion
 
+    #region Button Handlers
     public void OnExitButtonClicked()
     {
-        Debug.Log("Exit button clicked");
-        Time.timeScale = 1f; // Ensure game is unpaused before going to the main menu
+        Time.timeScale = 1f;
+        EnableAllControls();
         SceneManager.LoadScene("TheMainMenu");
     }
 
     public void OnRestartButtonClicked()
     {
-        Debug.Log("Restart button clicked");
-        Time.timeScale = 1f; // Ensure game is unpaused before reloading the scene
+        Time.timeScale = 1f;
+        EnableAllControls();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnNextStageButtonClicked()
     {
-        Debug.Log("Next Stage button clicked");
         Time.timeScale = 1f;
+        EnableAllControls();
         stageLoader.LoadNextStage();
     }
+
+    public void TogglePause()
+    {
+        if (isPaused) ResumeGame();
+        else PauseGame();
+    }
+    #endregion
 }
