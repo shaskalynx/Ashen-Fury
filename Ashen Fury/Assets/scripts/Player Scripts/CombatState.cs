@@ -56,11 +56,11 @@ public class CombatState : State
 
         character.animator.SetFloat("speed", input.magnitude, character.speedDampTime, Time.deltaTime);
 
-        if (sheathWeapon)
+        /*if (sheathWeapon)
         {
             character.animator.SetTrigger("sheathWeapon");
             stateMachine.ChangeState(character.standing);
-        }
+        }*/
 
         if (attack)
         {

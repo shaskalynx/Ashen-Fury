@@ -22537,6 +22537,10 @@ PrefabInstance:
       propertyPath: uiController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3017011230958712018, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 8449004803641222730, guid: 4a7265f25b70a004e9428cb52f65312a, type: 3}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.7724218

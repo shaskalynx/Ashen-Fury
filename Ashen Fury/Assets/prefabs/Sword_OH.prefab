@@ -131,5 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b9fe452b01a174781d68f3efb9d59f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDealDamage: 0
   weaponLength: 1.2
   weaponDamage: 10

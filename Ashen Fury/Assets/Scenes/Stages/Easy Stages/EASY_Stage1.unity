@@ -866,6 +866,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 71750302390035369, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
+      propertyPath: playerSpeed
+      value: 6.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1776538526501411095, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -874,6 +878,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3017011230958712018, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
+      propertyPath: 'weapons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1037715513984232, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+    - target: {fileID: 3017011230958712018, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
+      propertyPath: 'weapons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8449004803641222730, guid: 4a7265f25b70a004e9428cb52f65312a, type: 3}
+    - target: {fileID: 3017011230958712018, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
+      propertyPath: 'weapons.Array.data[2]'
+      value: 
+      objectReference: {fileID: 4214597693441333592, guid: 96c720dae8e52f244b054dda30044e9f, type: 3}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.7724218

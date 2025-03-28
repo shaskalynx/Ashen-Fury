@@ -60,7 +60,7 @@ public class Character : MonoBehaviour
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         cameraTransform = Camera.main.transform;
-        //Cursor.lockState = CursorLockMode.Locked; // Lock the cursor in the middle
+        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor in the middle
         Cursor.visible = false; // Hide the cursor in gameplay
 
         // (SOUND MANAGER) If not assigned in inspector, try to find it in children
@@ -80,8 +80,13 @@ public class Character : MonoBehaviour
         attacking = new AttackState(this, movementSM);
         dodging = new DodgeState(this, movementSM); // Initialize dodging state
  
-        movementSM.Initialize(standing);
- 
+        //movementSM.Initialize(standing);
+        
+        // Initialize with combat state instead of standing state
+        movementSM.Initialize(combatting);
+        
+        // Trigger the draw weapon animation
+        animator.SetTrigger("drawWeapon");
         normalColliderHeight = controller.height;
         gravityValue *= gravityMultiplier;
     }
