@@ -9,8 +9,8 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] GameObject ragdoll;
     [SerializeField] private Slider healthBar; // Reference to UI slider
     [SerializeField] private UIController uiController; // Reference to UI controller
- 
     Animator animator;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -38,7 +38,6 @@ public class HealthSystem : MonoBehaviour
         health -= damageAmount;
         animator.SetTrigger("damage");
         //CameraShake.Instance.ShakeCamera(2f, 0.2f);
- 
         UpdateHealthBar(); // Update health bar after taking damage
  
         if (health <= 0)
