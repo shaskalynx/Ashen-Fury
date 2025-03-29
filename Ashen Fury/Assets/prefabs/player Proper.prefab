@@ -163,8 +163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponHolder: {fileID: 8518759977916421499}
   weapons:
-  - {fileID: 1037715513984232, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
-  - {fileID: 8449004803641222730, guid: 4a7265f25b70a004e9428cb52f65312a, type: 3}
+  - {fileID: 3213851043470871558, guid: 5f3044af7520e754b819a06ae0db8722, type: 3}
+  - {fileID: 6013990982369288243, guid: 97fa01b58da39f74d834bd988c926642, type: 3}
   - {fileID: 4214597693441333592, guid: 96c720dae8e52f244b054dda30044e9f, type: 3}
   weaponSheath: {fileID: 3557176750177227829}
   currentWeaponInHand: {fileID: 0}
