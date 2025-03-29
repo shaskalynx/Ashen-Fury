@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLength: 2
-  weaponDamage: 15
+  weaponDamage: 30
 --- !u!1 &1571071396313611952
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,10 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a93d3be45b64297c29c8e614a71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 7663417131468623399, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
   agent: {fileID: 6112494322455185337}
-  aggroRange: 10
-  attackRange: 3.8
+  aggroRange: 30
+  attackRange: 3
   attackCD: 2
   newDestinationCD: 0.5
   stateName: 
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec64fd0f1771b144b78d51c66a08bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
   hitVFX: {fileID: 1743637094903878, guid: 021a2f7a2c5bc4449b4c64a66a050e8c, type: 3}
   ragdoll: {fileID: 0}
 --- !u!114 &8350175160711708777
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLength: 1.1
-  weaponDamage: 15
+  weaponDamage: 30
 --- !u!1 &2559096896664529978
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLength: 2.5
-  weaponDamage: 15
+  weaponDamage: 30
 --- !u!1 &5361607307697105719
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLength: 2.5
-  weaponDamage: 15
+  weaponDamage: 30
 --- !u!1001 &8967182181251814471
 PrefabInstance:
   m_ObjectHideFlags: 0

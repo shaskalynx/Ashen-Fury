@@ -71,8 +71,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 10
-  buffDuration: 10
-  buffAmount: 20
+  buffDuration: 30
+  buffAmount: 30
   respawnTime: 5
   type: 1
 --- !u!114 &3442448086818181496

@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872b48f038d40d74aba09e644e66ebc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
+  playerSpeed: 6.5
   crouchSpeed: 2
   sprintSpeed: 10
   jumpHeight: 0.8
@@ -162,7 +162,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponHolder: {fileID: 8518759977916421499}
-  weapon: {fileID: 1037715513984232, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+  weapons:
+  - {fileID: 1037715513984232, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
+  - {fileID: 8449004803641222730, guid: 4a7265f25b70a004e9428cb52f65312a, type: 3}
+  - {fileID: 4214597693441333592, guid: 96c720dae8e52f244b054dda30044e9f, type: 3}
   weaponSheath: {fileID: 3557176750177227829}
   currentWeaponInHand: {fileID: 0}
 --- !u!114 &6261321881441652665

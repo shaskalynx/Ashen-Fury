@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canDealDamage: 0
   weaponLength: 1.2
-  weaponDamage: 10
+  weaponDamage: 20
 --- !u!1 &8449004803641222730
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +74,7 @@ Transform:
   m_GameObject: {fileID: 8449004803641222730}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.000000024893, z: 0.083}
+  m_LocalPosition: {x: 0, y: -0.000000024893, z: 0.071}
   m_LocalScale: {x: 0.55452, y: 0.55452, z: 0.55452}
   m_ConstrainProportionsScale: 0
   m_Children:

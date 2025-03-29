@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6771e6b8d7e000d40a5a59ff7dfe8f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healAmount: 10
+  healAmount: 50
   buffDuration: 10
   buffAmount: 20
   respawnTime: 5

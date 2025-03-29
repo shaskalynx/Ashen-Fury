@@ -6,6 +6,9 @@ using System.Collections.Generic;
 public class ObjectiveSystem : MonoBehaviour
 {
     private List<GameObject> enemies = new List<GameObject>();
+    [SerializeField] private GameObject bossPrefab; // Reference to the boss prefab
+    private GameObject activeBoss; // Reference to the active boss instance
+    private bool bossDefeated = false;
 
     [SerializeField] private UIController uiController;
 
@@ -31,6 +34,11 @@ public class ObjectiveSystem : MonoBehaviour
         {
             Debug.LogWarning("Objective Text reference is missing!");
         }
+
+        if (bossPrefab != null)
+        {
+            bossPrefab.SetActive(false); // Ensure boss is initially disabled
+        }
     }
 
     void Update()
@@ -46,8 +54,24 @@ public class ObjectiveSystem : MonoBehaviour
             }
         }
 
-        // Check if all enemies are defeated
-        if (enemies.Count == 0)
+        // Check if all regular enemies are defeated and boss needs to be spawned
+        if (enemies.Count == 0 && bossPrefab != null && activeBoss == null && !bossDefeated)
+        {
+            bossPrefab.SetActive(true);
+            activeBoss = bossPrefab;
+            objectiveText.text = "Objective: Defeat the Boss!";
+            objectiveText.gameObject.SetActive(true);
+        }
+
+        // Check if boss is defeated
+        if (activeBoss != null && (!activeBoss.activeInHierarchy || !activeBoss.GetComponent<enemy>().enabled))
+        {
+            bossDefeated = true;
+            activeBoss = null;
+        }
+
+        // Check for victory condition (all enemies and boss defeated)
+        if (enemies.Count == 0 && bossDefeated)
         {
             if (uiController != null)
             {
