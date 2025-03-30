@@ -57364,7 +57364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1466481129
 Transform:
   m_ObjectHideFlags: 0
@@ -67122,55 +67122,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7724555
+      value: 2.119332
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5178552
+      value: -3.3649702
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.193813
+      value: -22.209217
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9673613
+      value: 0.9965283
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2534013
+      value: 0.033140708
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000029302525
+      value: -0.07633208
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000007675828
+      value: 0.002538512
       objectReference: {fileID: 0}
     - target: {fileID: 5258175348011872044, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7724209
+      value: 2.119332
       objectReference: {fileID: 0}
     - target: {fileID: 5258175348011872044, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.733404
+      value: -22.209217
       objectReference: {fileID: 0}
     - target: {fileID: 5258175348011872044, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9673613
+      value: 0.9965283
       objectReference: {fileID: 0}
     - target: {fileID: 5258175348011872044, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2534013
+      value: 0.033140704
       objectReference: {fileID: 0}
     - target: {fileID: 5258175348011872044, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000029302527
+      value: -0.07633208
       objectReference: {fileID: 0}
     - target: {fileID: 5258175348011872044, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000007675829
+      value: 0.00253851
       objectReference: {fileID: 0}
     - target: {fileID: 7663417131468623399, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -75856,6 +75856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5dd449bf1af604eafb471fc471c2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossPrefab: {fileID: 0}
   uiController: {fileID: 384379406}
   objectiveText: {fileID: 1579904388}
   objectiveDisplayTime: 20

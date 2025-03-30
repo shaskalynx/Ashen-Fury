@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RedPotion
   - Enemy
+  - FreeLookCam
   layers:
   - Default
   - TransparentFX

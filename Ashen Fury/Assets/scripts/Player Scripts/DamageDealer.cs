@@ -5,13 +5,20 @@ public class DamageDealer : MonoBehaviour
 {
     public bool canDealDamage;
     List<GameObject> hasDealtDamage;
- 
+
     [SerializeField] float weaponLength;
     [SerializeField] public float weaponDamage;
+
+    [Header("Camera Shake Properties")]
+    [SerializeField] cameraShake _cameraShake;
+    [SerializeField] float shakeIntensity = 1f;
+    [SerializeField] float shakeTime = 0.2f;
+
     void Start()
     {
         canDealDamage = false;
         hasDealtDamage = new List<GameObject>();
+        _cameraShake = FindObjectOfType<cameraShake>();
     }
  
     void Update()
@@ -30,6 +37,7 @@ public class DamageDealer : MonoBehaviour
                     //Debug.Log("Damaged the enemy");
                     hasDealtDamage.Add(hit.transform.gameObject);
                 }
+                _cameraShake.ShakeCamera(shakeIntensity, shakeTime);
             }
         }
     }
