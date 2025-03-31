@@ -13,6 +13,7 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] private AudioClip swordSheathSound;
     [SerializeField] private AudioClip swordUnsheathSound;
     [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip dashSound;
 
     [Header("Movement Sounds")]
     [SerializeField] private AudioClip footstepSound;
@@ -48,6 +49,14 @@ public class PlayerSoundManager : MonoBehaviour
         if (attackSound2 != null)
         {
             combatSource.PlayOneShot(attackSound2);
+        }
+    }
+
+    public void PlayDash()
+    {
+        if (dashSound != null)
+        {
+            combatSource.PlayOneShot(dashSound);
         }
     }
 

@@ -30267,6 +30267,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.119332
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.3649702
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -22.209217
+      objectReference: {fileID: 0}
     - target: {fileID: 7663417131468623399, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.79
@@ -47549,6 +47561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5dd449bf1af604eafb471fc471c2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossPrefab: {fileID: 0}
   uiController: {fileID: 612035397}
   objectiveText: {fileID: 1347335072}
   objectiveDisplayTime: 10
@@ -65592,7 +65605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f550ab294e74b45a9e7ddf23826c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 8300000, guid: 4aff8127ba2824c4482fc09cbd490197, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 4df1552fe5a51a649a7f8193804fbfe3, type: 3}
   volume: 0.5
   playOnStart: 1
 --- !u!1001 &2024766259

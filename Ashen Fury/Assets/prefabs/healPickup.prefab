@@ -5029,6 +5029,7 @@ MonoBehaviour:
   buffAmount: 20
   respawnTime: 5
   type: 0
+  pickupSound: {fileID: 8300000, guid: 54d4a6d19f975e948ba7ac397b67ddc9, type: 3}
 --- !u!1001 &4330032554674934717
 PrefabInstance:
   m_ObjectHideFlags: 0

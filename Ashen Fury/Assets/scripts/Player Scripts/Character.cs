@@ -150,6 +150,11 @@ public class Character : MonoBehaviour
         soundManager.PlayDeath();
     }
 
+    public void PlayDash()
+    {
+        soundManager.PlayDash();
+    }
+
     /*public void PlayFootstep()
     {
         soundManager.PlayFootstep();
