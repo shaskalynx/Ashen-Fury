@@ -27,8 +27,9 @@ public class StageLoader : MonoBehaviour
                 // Check if the next stage exceeds the maximum number of stages
                 if (nextStage > maxStages)
                 {
-                    Debug.Log("All stages completed! Returning to the first stage.");
-                    nextStage = 1; // Reset to the first stage
+                    Debug.Log("All stages completed! Returning to main menu.");
+                    SceneManager.LoadScene("TheMainMenu"); // Assuming your main menu scene is named "MainMenu"
+                    return;
                 }
 
                 // Load the next stage scene
