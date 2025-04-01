@@ -26912,12 +26912,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Use WASD keys for Player Movement
 
-    Drag Mouse for Camera Control
-
-    Hold
-    down Shift to Sprint
-
-    Press Spacebar to Jump'
+    Drag Mouse for Camera Control'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29588,8 +29583,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5dd449bf1af604eafb471fc471c2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossPrefab: {fileID: 0}
   uiController: {fileID: 613666306}
-  congratulatoryText: {fileID: 1018473255}
+  objectiveText: {fileID: 0}
+  objectiveDisplayTime: 3
 --- !u!1001 &1221405791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36360,11 +36357,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press R to draw your sword
+  m_text: 'Press LMB to perform an Attack
 
-    Press LMB to attack
-
-    Press C to crouch
+    Press RMB to perform a Dash
 
 '
   m_isRightToLeft: 0
@@ -51833,11 +51828,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7724218
+      value: 1.9478939
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.7605503
+      value: -3.4143887
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51845,35 +51840,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.967318
+      value: 0.9965189
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.25356653
+      value: 0.03317159
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000034027192
+      value: -0.07644137
       objectReference: {fileID: 0}
     - target: {fileID: 4837725669320496783, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -8.9196706e-10
+      value: 0.002544539
       objectReference: {fileID: 0}
     - target: {fileID: 5258175348011872044, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.967318
+      value: 0.9965236
       objectReference: {fileID: 0}
     - target: {fileID: 5258175348011872044, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2535665
+      value: 0.03315612
       objectReference: {fileID: 0}
     - target: {fileID: 5258175348011872044, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -4.8278045e-11
+      value: -0.07638671
       objectReference: {fileID: 0}
     - target: {fileID: 5258175348011872044, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.9461733e-11
+      value: 0.0025415223
       objectReference: {fileID: 0}
     - target: {fileID: 7663417131468623399, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
       propertyPath: m_LocalPosition.x

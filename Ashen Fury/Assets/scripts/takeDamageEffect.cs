@@ -27,7 +27,7 @@ public class takeDamageEffect : MonoBehaviour
         if(healthSystem.health < lastFrameHealth)
         {
             StartCoroutine(TakeDamageEffectCoroutine()); 
-            Debug.Log("Damage effect triggered");
+            //Debug.Log("Damage effect triggered");
         }
         lastFrameHealth = healthSystem.health;
     }
@@ -39,7 +39,7 @@ public class takeDamageEffect : MonoBehaviour
         _vignette.active = true;
         yield return new WaitForSeconds(0.4f);
         
-        Debug.Log("Starting fade out"); 
+        //Debug.Log("Starting fade out"); 
         while (currentIntensity > 0)
         {
             currentIntensity -= Time.deltaTime * 0.5f;
@@ -47,6 +47,6 @@ public class takeDamageEffect : MonoBehaviour
             yield return null;
         }
         _vignette.active = false;
-        Debug.Log("Damage effect completed");
+        //Debug.Log("Damage effect completed");
     }
 }
