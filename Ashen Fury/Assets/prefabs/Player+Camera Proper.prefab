@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 732601260185946584}
   serializedVersion: 2
   m_LocalRotation: {x: 0.033140723, y: -0.07633212, z: 0.0025385143, w: 0.9965283}
-  m_LocalPosition: {x: 25.321754, y: -3.3899403, z: -6.72262}
+  m_LocalPosition: {x: 15.621754, y: -3.2599401, z: -1.0426197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1197,8 +1197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatSource: {fileID: 6270773416440283819}
   movementSource: {fileID: 2410173060641272355}
-  attackSound1: {fileID: 8300000, guid: 02780e4d070d20048970f868f0e0a353, type: 3}
-  attackSound2: {fileID: 8300000, guid: 02780e4d070d20048970f868f0e0a353, type: 3}
+  attackSound1: {fileID: 8300000, guid: 546a876e7ded20647b9761e8150f76b5, type: 3}
+  attackSound2: {fileID: 8300000, guid: 4a503dee5667f3349a7b63afa854f166, type: 3}
   damageSound: {fileID: 8300000, guid: 20de7827dcfe59c4ab871542a01eed3f, type: 3}
   swordSheathSound: {fileID: 8300000, guid: eb771ccc83b2de446bdca87fc2a44ee7, type: 3}
   swordUnsheathSound: {fileID: 8300000, guid: 1abcd1170d65a0748b30645f1da615b8, type: 3}
