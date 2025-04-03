@@ -8,7 +8,6 @@ public class potionPickup : MonoBehaviour
     private float playerHealth;
     private float playerMaxHealth;
     public float healAmount = 10; // Amount of health restored by the heal potion
-    public float buffDuration = 10; // Duration of the power-up effect
     public float buffAmount = 20; // Amount of damage increase during the power-up
     public float respawnTime = 5; // Time before the potion respawns after being picked up
     [SerializeField] private potionTypes type;
@@ -92,7 +91,7 @@ public class potionPickup : MonoBehaviour
                 StartCoroutine(buffUp(damageDealer));
                 if (uiController != null)
                 {
-                    uiController.ShowPickupMessage($"Power Up! Damage increased by {buffAmount} for {buffDuration} seconds");
+                    uiController.ShowPickupMessage($"Power Up! Damage increased by {buffAmount}");
                 }
                 StartRespawnCoroutine(); // Start the respawn coroutine
                 gameObject.SetActive(false); // Disable the potion instead of destroying it
@@ -116,10 +115,9 @@ public class potionPickup : MonoBehaviour
 
     private IEnumerator buffUp(DamageDealer damageDealer)
     {
-        float originalDamage = damageDealer.weaponDamage; // Store the original damage
-        damageDealer.weaponDamage = buffAmount; // Apply the buff
-        yield return new WaitForSeconds(buffDuration);
-        damageDealer.weaponDamage = originalDamage; // Revert to the original damage
+        float originalDamage = damageDealer.weaponDamage;
+        damageDealer.weaponDamage = originalDamage + buffAmount;
+        yield break; // End coroutine immediately since we don't need to wait anymore
     }
 
     private void StartRespawnCoroutine()

@@ -3945,7 +3945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa18a93d3be45b64297c29c8e614a71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 7663417131468623399, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
   agent: {fileID: 5432609384937020950}
   aggroRange: 7
   attackRange: 3
@@ -3967,7 +3967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec64fd0f1771b144b78d51c66a08bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
   hitVFX: {fileID: 1743637094903878, guid: 021a2f7a2c5bc4449b4c64a66a050e8c, type: 3}
   ragdoll: {fileID: 1808333587136242448, guid: 4fa82707331524b4d9575e816d8c8f2d, type: 3}
 --- !u!114 &5134337563853177548
