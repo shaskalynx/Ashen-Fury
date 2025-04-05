@@ -46,7 +46,17 @@ public class CombatState : State
 
         input = moveAction.ReadValue<Vector2>();
         velocity = new Vector3(input.x, 0, input.y);
-        velocity = velocity.x * character.cameraTransform.right.normalized + velocity.z * character.cameraTransform.forward.normalized;
+        
+        // Fix: Project camera forward direction onto horizontal plane
+        Vector3 cameraForward = character.cameraTransform.forward;
+        cameraForward.y = 0;
+        cameraForward.Normalize();
+        
+        Vector3 cameraRight = character.cameraTransform.right;
+        cameraRight.y = 0;
+        cameraRight.Normalize();
+        
+        velocity = velocity.x * cameraRight + velocity.z * cameraForward;
         velocity.y = 0f;
     }
 
