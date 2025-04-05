@@ -20,6 +20,7 @@ public class ObjectiveSystem : MonoBehaviour
         // Find all objects with the "Enemy" tag and add them to the list
         GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
         enemies.AddRange(enemyObjects);
+        bossPrefab = GameObject.Find("Boss"); // Find the boss upon scene load (to ensure it references the boss in the correct active difficulty)
 
         Debug.Log($"Total enemies in scene: {enemies.Count}");
 
