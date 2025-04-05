@@ -14183,7 +14183,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.6666667
+  m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 0ac9961e91847a84097ddbba35d0de4a, type: 2}
   m_BuildHeightMesh: 0
@@ -19398,7 +19398,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kill the enemy to finish the tutorial!
+  m_text: 'There are two power-ups you can pick up. Red restores your health, and
+    the green potion increases the attack power of your sword.
+
+    Kill the enemies
+    to finish the tutorial!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -24981,6 +24985,63 @@ Transform:
   - {fileID: 1295634642}
   m_Father: {fileID: 1180020449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1032908826
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1571071396313611952, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_Name
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895590391721005642, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.6667607
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895590391721005642, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.052412033
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895590391721005642, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 75.59086
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895590391721005642, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895590391721005642, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895590391721005642, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895590391721005642, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895590391721005642, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895590391721005642, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895590391721005642, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
 --- !u!1 &1033641045
 GameObject:
   m_ObjectHideFlags: 0
@@ -27267,67 +27328,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 668735768885291391, guid: 91ad7bf144749b04ab484a680630a040, type: 3}
   m_PrefabInstance: {fileID: 1131422546}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1133592091
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6395591681119790969, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_Name
-      value: eliteEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6395591681119790969, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871204712789416596, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.59535027
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871204712789416596, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.05241537
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871204712789416596, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 81.26862
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871204712789416596, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871204712789416596, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871204712789416596, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871204712789416596, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871204712789416596, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871204712789416596, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871204712789416596, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
 --- !u!1001 &1135885013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29644,7 +29644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5dd449bf1af604eafb471fc471c2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossPrefab: {fileID: 1439364896}
+  bossPrefab: {fileID: 0}
   uiController: {fileID: 613666306}
   objectiveText: {fileID: 0}
   objectiveDisplayTime: 3
@@ -35035,11 +35035,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8492440690643632977, guid: 9f2ed2ef64d0a59419c4791d6ddda859, type: 3}
   m_PrefabInstance: {fileID: 1436525490}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1439364896 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6395591681119790969, guid: ca3b502067bc3244889ef5a6b373f0f7, type: 3}
-  m_PrefabInstance: {fileID: 1133592091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1441043085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36423,9 +36418,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press LMB to perform an Attack
+  m_text: 'Press Left Mouse Button to perform an Attack, clicking it multiple times
+    will result in a chain of attacks
 
-    Press RMB to perform a Dash
+    Press Right Mouse Button to perform a
+    Dash
+
+    Press Numbers 1-3 to switch weapons
 
 '
   m_isRightToLeft: 0
@@ -51996,7 +51995,7 @@ SceneRoots:
   - {fileID: 1347004608}
   - {fileID: 1898811690}
   - {fileID: 2147239026}
-  - {fileID: 1210628705}
   - {fileID: 1960565228}
   - {fileID: 604056385}
-  - {fileID: 1133592091}
+  - {fileID: 1210628705}
+  - {fileID: 1032908826}
