@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 7663417131468623399, guid: 8fdf4075b4416384390ca31ca264c55a, type: 3}
   agent: {fileID: 6112494322455185337}
-  aggroRange: 30
+  aggroRange: 100
   attackRange: 3
   attackCD: 2
   newDestinationCD: 0.5

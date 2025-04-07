@@ -27,7 +27,7 @@ public class ObjectiveSystem : MonoBehaviour
         // Display the objective text when the stage starts
         if (objectiveText != null)
         {
-            objectiveText.text = "Objective: Defeat all enemies in the area.";
+            objectiveText.text = "Objective: Find and Defeat all enemies in the area.";
             objectiveText.gameObject.SetActive(true); // Show the objective text
             StartCoroutine(HideObjectiveTextAfterDelay(objectiveDisplayTime)); // Hide the text after a delay
         }

@@ -26973,7 +26973,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Use WASD keys for Player Movement
 
-    Drag Mouse for Camera Control'
+    Drag Mouse for Camera Control
+
+    Press
+    the Escape to access the pause menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29644,7 +29647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5dd449bf1af604eafb471fc471c2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossPrefab: {fileID: 0}
+  bossPrefab: {fileID: 1266359269}
   uiController: {fileID: 613666306}
   objectiveText: {fileID: 0}
   objectiveDisplayTime: 3
@@ -30793,6 +30796,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7404978330120036212, guid: 4f640b8fd1834cd4ea942e205ee107b8, type: 3}
   m_PrefabInstance: {fileID: 1265163198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1266359269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1571071396313611952, guid: 2bd7ddd93940bf94082420ec0b442905, type: 3}
+  m_PrefabInstance: {fileID: 1032908826}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1267086690 stripped
 Transform:
