@@ -29,7 +29,7 @@ public class enemy : MonoBehaviour
     GameObject player;
 
     // Declare currentState and result as class-level variables
-    private Vector3 currentState;
+    public Vector3 currentState;
     private NodeState result;
 
     void Start()
@@ -81,7 +81,7 @@ public class enemy : MonoBehaviour
                     /*Debug.Log($"Enemy performing: {behavior.node.name} " +
                              $"(Weight: {behavior.weight:F2}, Position: {behavior.node.position:F2}, " +
                              $"Health: {enemyHealth.health:F2}, " +
-                             $"Distance: {currentState.x:F2})");*/ 
+                             $"Distance: {currentState.x:F2})"); */
                     break;
                 }
             }
